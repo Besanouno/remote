@@ -28,6 +28,6 @@ public class AudioServiceImpl implements AudioService {
 
     @Override
     public void getAudioVolumeAndUpdate(final SeekBar volumeBar) {
-        new GetAudioVolumeTask(volumeBar, audioRetrofit).execute();
+        new GetAudioVolumeTask(audioRetrofit, volumeBar).execute();
     }
 }

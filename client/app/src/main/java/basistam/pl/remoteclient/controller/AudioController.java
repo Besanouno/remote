@@ -8,10 +8,15 @@ import basistam.pl.remoteclient.service.AudioServiceImpl;
 public class AudioController {
 
     private final AudioService audioService;
-    private final SeekBar volumeBar;
+
+    private SeekBar volumeBar;
 
     public AudioController(SeekBar volumeBar) {
         this.audioService = new AudioServiceImpl();
+        initVolumeBar(volumeBar);
+    }
+
+    private void initVolumeBar(SeekBar volumeBar) {
         this.volumeBar = volumeBar;
         initVolumeBarChangeListener();
         this.audioService.getAudioVolumeAndUpdate(volumeBar);

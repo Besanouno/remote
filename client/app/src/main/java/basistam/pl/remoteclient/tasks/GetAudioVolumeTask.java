@@ -13,9 +13,9 @@ public class GetAudioVolumeTask extends AsyncTask<Void, Void, Integer> {
     private final SeekBar volumeBar;
     private final AudioRetrofit audioRetrofit;
 
-    public GetAudioVolumeTask(SeekBar volumeBar, AudioRetrofit audioRetrofit) {
-        this.volumeBar = volumeBar;
+    public GetAudioVolumeTask(AudioRetrofit audioRetrofit, SeekBar volumeBar) {
         this.audioRetrofit = audioRetrofit;
+        this.volumeBar = volumeBar;
     }
 
 
