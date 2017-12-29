@@ -8,9 +8,15 @@ import retrofit2.http.Query;
 public interface AudioRetrofit {
 
     @PUT("remote")
-    Call<Integer> changeVolumeRequest(@Query("volume") final int volume);
+    Call<Integer> setVolumeRequest(@Query("volume") final int volume);
 
     @GET("remote")
     Call<Integer> getVolumeRequest();
+
+    @PUT("remote/speakers/status")
+    Call<String> setSpeakersStatusRequest(@Query("status") final String status);
+
+    @GET("remote/speakers/status")
+    Call<String> getSpeakersStatusRequest();
 
 }
