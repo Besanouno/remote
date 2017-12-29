@@ -6,13 +6,13 @@ import android.widget.SeekBar;
 
 import basistam.pl.remoteclient.service.AudioService;
 import basistam.pl.remoteclient.service.AudioServiceImpl;
+import basistam.pl.remoteclient.utils.Callback;
 
 public class AudioController {
 
     private final AudioService audioService;
 
     private SeekBar volumeBar;
-    private ImageButton btnSynchronize;
 
     public AudioController(SeekBar volumeBar, ImageButton btnSynchronize) {
         this.audioService = new AudioServiceImpl();
@@ -23,7 +23,7 @@ public class AudioController {
     private void initVolumeBar(SeekBar volumeBar) {
         this.volumeBar = volumeBar;
         initVolumeBarChangeListener();
-        this.audioService.getAudioVolumeAndUpdate(volumeBar);
+        synchronizeVolumeBar();
     }
 
     private void initVolumeBarChangeListener() {
@@ -41,13 +41,11 @@ public class AudioController {
         });
     }
 
+    private void synchronizeVolumeBar() {
+        audioService.getAudioVolumeAndCall(param -> volumeBar.setProgress(param));
+    }
+
     private void initBtnSynchronize(ImageButton btnSynchronize) {
-        this.btnSynchronize = btnSynchronize;
-        this.btnSynchronize.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                audioService.getAudioVolumeAndUpdate(volumeBar);
-            }
-        });
+        btnSynchronize.setOnClickListener(view -> synchronizeVolumeBar());
     }
 }
