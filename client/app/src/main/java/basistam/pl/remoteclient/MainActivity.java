@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private void initVolumeBar() {
         SeekBar volumeBar = (SeekBar) findViewById(R.id.volumeBar);
         ImageButton btnSynchronize = (ImageButton) findViewById(R.id.btn_synchronize);
-        new AudioController(volumeBar, btnSynchronize);
+        ImageButton btnMute = (ImageButton) findViewById(R.id.btn_mute);
+        ImageButton btnUnmute = (ImageButton) findViewById(R.id.btn_unmute);
+        new AudioController(volumeBar, btnSynchronize, btnMute, btnUnmute);
     }
 }

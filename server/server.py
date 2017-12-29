@@ -24,5 +24,22 @@ def get_audio_volume():
     return volume
 
 
+@app.route('/remote/speakers/status', methods=['GET'])
+def get_speakers_status():
+    bash_command = "amixer -D pulse get Master"
+    process = subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
+    amixer_stdout = process.communicate()[0]
+    status = re.search('\[(on|off)\]', amixer_stdout).group(1)
+    return status
+
+
+@app.route('/remote/speakers/status', methods=['PUT'])
+def set_speakers_status():
+    status = request.args.get('status')
+    bash_command = "amixer -D pulse sset Master " + status
+    subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
+    return status
+
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0")
