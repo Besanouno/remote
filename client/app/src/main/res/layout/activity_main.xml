@@ -32,12 +32,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_refresh"
-        android:layout_alignTop="@+id/imageButton2"
-        android:layout_toStartOf="@+id/imageButton2"
+        android:layout_alignTop="@+id/btn_synchronize"
+        android:layout_toStartOf="@+id/btn_synchronize"
         android:layout_marginEnd="14dp" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/btn_synchronize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/volumeBar"
