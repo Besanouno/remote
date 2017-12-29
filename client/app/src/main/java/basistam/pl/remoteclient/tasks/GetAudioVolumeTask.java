@@ -6,16 +6,17 @@ import android.widget.SeekBar;
 import java.io.IOException;
 
 import basistam.pl.remoteclient.retrofit.AudioRetrofit;
+import basistam.pl.remoteclient.utils.Callback;
 import retrofit2.Call;
 
 public class GetAudioVolumeTask extends AsyncTask<Void, Void, Integer> {
 
-    private final SeekBar volumeBar;
     private final AudioRetrofit audioRetrofit;
+    private final Callback<Integer> callback;
 
-    public GetAudioVolumeTask(AudioRetrofit audioRetrofit, SeekBar volumeBar) {
+    public GetAudioVolumeTask(AudioRetrofit audioRetrofit, Callback<Integer> callback) {
         this.audioRetrofit = audioRetrofit;
-        this.volumeBar = volumeBar;
+        this.callback = callback;
     }
 
 
@@ -33,6 +34,6 @@ public class GetAudioVolumeTask extends AsyncTask<Void, Void, Integer> {
     @Override
     protected void onPostExecute(Integer result) {
         if (result != null)
-            volumeBar.setProgress(result);
+            callback.call(result);
     }
 }

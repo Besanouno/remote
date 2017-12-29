@@ -1,8 +1,8 @@
 package basistam.pl.remoteclient.service;
 
-import android.widget.SeekBar;
+import basistam.pl.remoteclient.utils.Callback;
 
 public interface AudioService {
     void setAudioVolume(final int volume);
-    void getAudioVolumeAndUpdate(final SeekBar volumeBar);
+    void getAudioVolumeAndCall(final Callback<Integer> callback);
 }

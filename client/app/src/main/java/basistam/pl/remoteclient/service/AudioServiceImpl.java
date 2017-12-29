@@ -5,6 +5,7 @@ import android.widget.SeekBar;
 import basistam.pl.remoteclient.retrofit.AudioRetrofit;
 import basistam.pl.remoteclient.tasks.ChangeAudioVolumeTask;
 import basistam.pl.remoteclient.tasks.GetAudioVolumeTask;
+import basistam.pl.remoteclient.utils.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -27,7 +28,7 @@ public class AudioServiceImpl implements AudioService {
     }
 
     @Override
-    public void getAudioVolumeAndUpdate(final SeekBar volumeBar) {
-        new GetAudioVolumeTask(audioRetrofit, volumeBar).execute();
+    public void getAudioVolumeAndCall(final Callback<Integer> callback) {
+        new GetAudioVolumeTask(audioRetrofit, callback).execute();
     }
 }

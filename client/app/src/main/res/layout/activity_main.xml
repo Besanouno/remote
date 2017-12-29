@@ -28,13 +28,24 @@
         android:layout_alignParentEnd="true" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btn_unmute"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_refresh"
         android:layout_alignTop="@+id/btn_synchronize"
+        android:layout_marginEnd="14dp"
         android:layout_toStartOf="@+id/btn_synchronize"
-        android:layout_marginEnd="14dp" />
+        android:visibility="invisible"
+        app:srcCompat="@drawable/ic_unmute" />
+
+    <ImageButton
+        android:id="@+id/btn_mute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btn_synchronize"
+        android:layout_marginEnd="14dp"
+        android:layout_toStartOf="@+id/btn_synchronize"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/ic_mute" />
 
     <ImageButton
         android:id="@+id/btn_synchronize"
