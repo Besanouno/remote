@@ -27,12 +27,12 @@ public class GetAudioVolumeTask extends AsyncTask<Void, Void, Integer> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return -1;
+        return null;
     }
 
     @Override
     protected void onPostExecute(Integer result) {
-        if (result != -1)
+        if (result != null)
             volumeBar.setProgress(result);
     }
 }
