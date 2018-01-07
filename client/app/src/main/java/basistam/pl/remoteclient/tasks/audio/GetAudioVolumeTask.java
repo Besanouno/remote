@@ -1,4 +1,4 @@
-package basistam.pl.remoteclient.tasks;
+package basistam.pl.remoteclient.tasks.audio;
 
 import android.os.AsyncTask;
 import android.widget.SeekBar;

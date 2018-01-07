@@ -1,5 +1,8 @@
 package basistam.pl.remoteclient.controller;
 
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 
@@ -14,16 +17,16 @@ public class AudioController {
 
     private SeekBar volumeBar;
 
-    public AudioController(SeekBar volumeBar, ImageButton btnSynchronize, ImageButton btnMute, ImageButton btnUnmute) {
+    public AudioController(Activity mainActivity) {
         this.audioService = new AudioServiceImpl();
-        initVolumeBar(volumeBar);
-        initBtnSynchronize(btnSynchronize);
-        initBtnMute(btnMute);
-        initBtnUnmute(btnUnmute);
+        initVolumeBar(mainActivity);
+        initBtnSynchronize(mainActivity);
+        initBtnMute(mainActivity);
+        initBtnUnmute(mainActivity);
     }
 
-    private void initVolumeBar(SeekBar volumeBar) {
-        this.volumeBar = volumeBar;
+    private void initVolumeBar(Activity mainActivity) {
+        this.volumeBar = mainActivity.findViewById(R.id.volumeBar);
         initVolumeBarChangeListener();
         synchronizeAudioVolume();
     }
@@ -49,17 +52,21 @@ public class AudioController {
         audioService.getAudioVolumeAndCall(param -> volumeBar.setProgress(param));
     }
 
-    private void initBtnSynchronize(ImageButton btnSynchronize) {
-        btnSynchronize.setOnClickListener(view -> synchronizeAudioVolume());
+    private void initBtnSynchronize(Activity mainActivity) {
+        mainActivity
+                .findViewById(R.id.btn_synchronize)
+                .setOnClickListener(view -> synchronizeAudioVolume());
     }
 
-    private void initBtnMute(ImageButton btnMute) {
-        btnMute.setOnClickListener(v -> audioService.setSpeakersStatus(SpeakerStatus.OFF));
+    private void initBtnMute(Activity mainActivity) {
+        mainActivity
+                .findViewById(R.id.btn_mute)
+                .setOnClickListener(v -> audioService.setSpeakersStatus(SpeakerStatus.OFF));
     }
 
-    private void initBtnUnmute(ImageButton btnUnmute) {
-        btnUnmute.setOnClickListener(v -> audioService.setSpeakersStatus(SpeakerStatus.ON));
-
+    private void initBtnUnmute(Activity mainActivity) {
+        mainActivity
+                .findViewById(R.id.btn_unmute)
+                .setOnClickListener(v -> audioService.setSpeakersStatus(SpeakerStatus.ON));
     }
-
 }

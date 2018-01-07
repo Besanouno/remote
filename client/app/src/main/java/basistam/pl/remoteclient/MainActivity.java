@@ -2,10 +2,9 @@ package basistam.pl.remoteclient;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageButton;
-import android.widget.SeekBar;
 
 import basistam.pl.remoteclient.controller.AudioController;
+import basistam.pl.remoteclient.controller.VideoController;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,14 +13,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initVolumeBar();
+        initControllers();
     }
 
-    private void initVolumeBar() {
-        SeekBar volumeBar = (SeekBar) findViewById(R.id.volumeBar);
-        ImageButton btnSynchronize = (ImageButton) findViewById(R.id.btn_synchronize);
-        ImageButton btnMute = (ImageButton) findViewById(R.id.btn_mute);
-        ImageButton btnUnmute = (ImageButton) findViewById(R.id.btn_unmute);
-        new AudioController(volumeBar, btnSynchronize, btnMute, btnUnmute);
+    private void initControllers() {
+        new AudioController(this);
+        new VideoController(this);
     }
 }

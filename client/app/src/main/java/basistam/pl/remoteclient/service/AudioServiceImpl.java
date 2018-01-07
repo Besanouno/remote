@@ -4,10 +4,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import basistam.pl.remoteclient.retrofit.AudioRetrofit;
-import basistam.pl.remoteclient.tasks.ChangeAudioVolumeTask;
-import basistam.pl.remoteclient.tasks.ChangeSpeakersStatusTask;
-import basistam.pl.remoteclient.tasks.GetAudioVolumeTask;
-import basistam.pl.remoteclient.tasks.GetSpeakersStatusTask;
+import basistam.pl.remoteclient.tasks.audio.ChangeAudioVolumeTask;
+import basistam.pl.remoteclient.tasks.audio.ChangeSpeakersStatusTask;
+import basistam.pl.remoteclient.tasks.audio.GetAudioVolumeTask;
+import basistam.pl.remoteclient.tasks.audio.GetSpeakersStatusTask;
 import basistam.pl.remoteclient.utils.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

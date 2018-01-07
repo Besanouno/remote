@@ -1,4 +1,4 @@
-package basistam.pl.remoteclient.tasks;
+package basistam.pl.remoteclient.tasks.audio;
 
 import android.os.AsyncTask;
 
@@ -7,20 +7,20 @@ import java.io.IOException;
 import basistam.pl.remoteclient.retrofit.AudioRetrofit;
 import retrofit2.Call;
 
-public class ChangeSpeakersStatusTask extends AsyncTask<String, Void, String> {
+public class ChangeAudioVolumeTask extends AsyncTask<Integer, Void, Void> {
 
     private final AudioRetrofit audioRetrofit;
 
-    public ChangeSpeakersStatusTask(AudioRetrofit audioRetrofit) {
+    public ChangeAudioVolumeTask(AudioRetrofit audioRetrofit) {
         this.audioRetrofit = audioRetrofit;
     }
 
     @Override
-    protected String doInBackground(String... params) {
+    protected Void doInBackground(Integer... params) {
         try {
             if (params.length != 0) {
-                String status = params[0];
-                Call<String> request = audioRetrofit.setSpeakersStatusRequest(status);
+                int volume = params[0];
+                Call<Integer> request = audioRetrofit.setVolumeRequest(volume);
                 request.execute();
             }
         } catch (IOException e) {
@@ -28,4 +28,5 @@ public class ChangeSpeakersStatusTask extends AsyncTask<String, Void, String> {
         }
         return null;
     }
+
 }
