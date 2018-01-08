@@ -56,11 +56,36 @@ def volume_up():
 
 @app.route('/remote/windows/switch', methods=['PUT'])
 def switch_windows():
-    if request.args.get('status') is 'on':
+    status = request.args.get('status')
+    if status == 'on':
         pyautogui.keyDown('alt')
         pyautogui.press('tab')
-    else:
+    elif status == 'off':
         pyautogui.keyUp('alt')
+    return ""
+
+
+@app.route('/remote/move/right', methods=['PUT'])
+def right():
+    pyautogui.press('right')
+    return ""
+
+
+@app.route('/remote/move/left', methods=['PUT'])
+def left():
+    pyautogui.press('left')
+    return ""
+
+
+@app.route('/remote/move/up', methods=['PUT'])
+def left():
+    pyautogui.press('up')
+    return ""
+
+
+@app.route('/remote/move/down', methods=['PUT'])
+def left():
+    pyautogui.press('down')
     return ""
 
 
