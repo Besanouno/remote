@@ -1,9 +1,21 @@
+import re
+import subprocess
+import pyautogui
+import asyncio
+import asyncio.base_futures
+import asyncio.base_tasks
+import asyncio.compat
+import asyncio.base_subprocess
+import asyncio.proactor_events
+import asyncio.constants
+import asyncio.selector_events
+import asyncio.windows_utils
+import asyncio.windows_events
+
+import jinja2.asyncsupport
+import jinja2.ext
 from flask import Flask
 from flask import request
-
-import pyautogui
-import subprocess
-import re
 
 app = Flask(__name__)
 
