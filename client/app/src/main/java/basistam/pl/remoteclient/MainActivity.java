@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import basistam.pl.remoteclient.controller.AudioController;
 import basistam.pl.remoteclient.controller.VideoController;
+import basistam.pl.remoteclient.controller.WindowController;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,5 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private void initControllers() {
         new AudioController(this);
         new VideoController(this);
+        new WindowController(this);
     }
 }

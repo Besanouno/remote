@@ -8,6 +8,7 @@ import basistam.pl.remoteclient.tasks.audio.ChangeAudioVolumeTask;
 import basistam.pl.remoteclient.tasks.audio.ChangeSpeakersStatusTask;
 import basistam.pl.remoteclient.tasks.audio.GetAudioVolumeTask;
 import basistam.pl.remoteclient.tasks.audio.GetSpeakersStatusTask;
+import basistam.pl.remoteclient.tasks.audio.SkipTask;
 import basistam.pl.remoteclient.utils.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -46,5 +47,15 @@ public class AudioServiceImpl implements AudioService {
     @Override
     public void getSpeakersStatusAndCall(Callback<String> callback) {
         new GetSpeakersStatusTask(audioRetrofit, callback).execute();
+    }
+
+    @Override
+    public void next() {
+        new SkipTask(audioRetrofit).execute("next");
+    }
+
+    @Override
+    public void prev() {
+        new SkipTask(audioRetrofit).execute("prev");
     }
 }

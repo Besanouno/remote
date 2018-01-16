@@ -7,4 +7,6 @@ public interface AudioService {
     void getAudioVolumeAndCall(final Callback<Integer> callback);
     void setSpeakersStatus(final String status);
     void getSpeakersStatusAndCall(final Callback<String> callback);
+    void next();
+    void prev();
 }

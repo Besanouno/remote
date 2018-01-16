@@ -23,6 +23,8 @@ public class AudioController {
         initBtnSynchronize(mainActivity);
         initBtnMute(mainActivity);
         initBtnUnmute(mainActivity);
+        initBtnNext(mainActivity);
+        initBtnPrev(mainActivity);
     }
 
     private void initVolumeBar(Activity mainActivity) {
@@ -68,5 +70,17 @@ public class AudioController {
         mainActivity
                 .findViewById(R.id.btn_unmute)
                 .setOnClickListener(v -> audioService.setSpeakersStatus(SpeakerStatus.ON));
+    }
+
+    private void initBtnNext(Activity mainActivity) {
+        mainActivity
+                .findViewById(R.id.btn_next)
+                .setOnClickListener(v -> audioService.next());
+    }
+
+    private void initBtnPrev(Activity mainActivity) {
+        mainActivity
+                .findViewById(R.id.btn_prev)
+                .setOnClickListener(v -> audioService.prev());
     }
 }
