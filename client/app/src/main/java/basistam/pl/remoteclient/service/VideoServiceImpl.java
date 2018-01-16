@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 
 import basistam.pl.remoteclient.retrofit.VideoRetrofit;
+import basistam.pl.remoteclient.service.address.AddressReader;
 import basistam.pl.remoteclient.tasks.video.PlayOrPauseTask;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -13,14 +14,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class VideoServiceImpl implements VideoService {
 
     private final VideoRetrofit videoRetrofit;
-    private final String BASE_URL = "http://192.168.1.3:5000/";
 
-    public VideoServiceImpl() {
+    public VideoServiceImpl(AddressReader addressReader) {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
         videoRetrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(addressReader.getFullAddress())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
                 .create(VideoRetrofit.class);

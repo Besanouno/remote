@@ -6,20 +6,23 @@ import android.os.Bundle;
 import basistam.pl.remoteclient.controller.AudioController;
 import basistam.pl.remoteclient.controller.VideoController;
 import basistam.pl.remoteclient.controller.WindowController;
+import basistam.pl.remoteclient.service.address.AddressService;
 
 public class MainActivity extends AppCompatActivity {
 
+    private AddressService addressService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.addressService = new AddressService(this);
         setContentView(R.layout.activity_main);
         initControllers();
     }
 
     private void initControllers() {
-        new AudioController(this);
-        new VideoController(this);
-        new WindowController(this);
+        new AudioController(this, addressService);
+        new VideoController(this, addressService);
+        new WindowController(this, addressService);
     }
 }

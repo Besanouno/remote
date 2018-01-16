@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import basistam.pl.remoteclient.retrofit.WindowRetrofit;
+import basistam.pl.remoteclient.service.address.AddressReader;
 import basistam.pl.remoteclient.tasks.windows.MoveTask;
 import basistam.pl.remoteclient.tasks.windows.TabSwitchTask;
 import basistam.pl.remoteclient.tasks.windows.WindowSwitchTask;
@@ -13,14 +14,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class WindowServiceImpl implements WindowService {
 
     private final WindowRetrofit windowRetrofit;
-    private final String BASE_URL = "http://192.168.1.3:5000/";
 
-    public WindowServiceImpl() {
+    public WindowServiceImpl(AddressReader addressReader) {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();
         windowRetrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(addressReader.getFullAddress())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
                 .create(WindowRetrofit.class);

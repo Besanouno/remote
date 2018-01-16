@@ -7,13 +7,14 @@ import android.widget.ImageButton;
 import basistam.pl.remoteclient.R;
 import basistam.pl.remoteclient.service.VideoService;
 import basistam.pl.remoteclient.service.VideoServiceImpl;
+import basistam.pl.remoteclient.service.address.AddressReader;
 
 public class VideoController {
 
     private VideoService videoService;
 
-    public VideoController(Activity mainActivity) {
-        this.videoService = new VideoServiceImpl();
+    public VideoController(Activity mainActivity, AddressReader addressReader) {
+        this.videoService = new VideoServiceImpl(addressReader);
         initBtnPlayOrPause(mainActivity);
     }
 

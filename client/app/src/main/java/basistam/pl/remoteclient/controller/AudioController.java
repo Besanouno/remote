@@ -10,6 +10,7 @@ import basistam.pl.remoteclient.R;
 import basistam.pl.remoteclient.enums.SpeakerStatus;
 import basistam.pl.remoteclient.service.AudioService;
 import basistam.pl.remoteclient.service.AudioServiceImpl;
+import basistam.pl.remoteclient.service.address.AddressReader;
 
 public class AudioController {
 
@@ -17,8 +18,8 @@ public class AudioController {
 
     private SeekBar volumeBar;
 
-    public AudioController(Activity mainActivity) {
-        this.audioService = new AudioServiceImpl();
+    public AudioController(Activity mainActivity, AddressReader addressReader) {
+        this.audioService = new AudioServiceImpl(addressReader);
         initVolumeBar(mainActivity);
         initBtnSynchronize(mainActivity);
         initBtnMute(mainActivity);

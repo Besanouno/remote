@@ -58,6 +58,13 @@
             android:inputType="textPersonName" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Zapisz" />
+
     <TextView
         android:id="@+id/tv_audioVolume"
         android:layout_width="wrap_content"
@@ -65,7 +72,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/volumeBar"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:text="Głośność" />
 
     <SeekBar
