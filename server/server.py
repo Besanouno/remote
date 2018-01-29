@@ -101,7 +101,7 @@ def left():
     return ""
 
 
-@app.route('/remote/video/playpause', methods=['PUT'])
+@app.route('/remote/video', methods=['PUT'])
 def play_pause():
     pyautogui.press('space')
     return ""
