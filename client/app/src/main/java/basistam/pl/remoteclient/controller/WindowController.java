@@ -2,6 +2,7 @@ package basistam.pl.remoteclient.controller;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.MotionEvent;
 import android.widget.EditText;
@@ -39,6 +40,10 @@ public class WindowController {
             editor.putString("ADDRESS", edtAddress.getText().toString());
             editor.putString("PORT", edtPort.getText().toString());
             editor.commit();
+
+            Intent i = mainActivity.getPackageManager().getLaunchIntentForPackage( mainActivity.getPackageName() );
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            mainActivity.startActivity(i);
         });
     }
 

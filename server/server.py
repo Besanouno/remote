@@ -1,19 +1,7 @@
 import re
 import subprocess
 import pyautogui
-import asyncio
-import asyncio.base_futures
-import asyncio.base_tasks
-import asyncio.compat
-import asyncio.base_subprocess
-import asyncio.proactor_events
-import asyncio.constants
-import asyncio.selector_events
-import asyncio.windows_utils
-import asyncio.windows_events
 
-import jinja2.asyncsupport
-import jinja2.ext
 from flask import Flask
 from flask import request
 
@@ -66,6 +54,22 @@ def volume_up():
     return ""
 
 
+@app.route('/remote/audio/next', methods=['PUT'])
+def audio_next():
+    pyautogui.keyDown('ctrl')
+    pyautogui.press('right')
+    pyautogui.keyUp('ctrl')
+    return ""
+
+
+@app.route('/remote/audio/prev', methods=['PUT'])
+def audio_prev():
+    pyautogui.keyDown('ctrl')
+    pyautogui.press('left')
+    pyautogui.keyUp('ctrl')
+    return ""
+
+
 @app.route('/remote/windows/switch', methods=['PUT'])
 def switch_windows():
     status = request.args.get('status')
@@ -74,6 +78,14 @@ def switch_windows():
         pyautogui.press('tab')
     elif status == 'off':
         pyautogui.keyUp('alt')
+    return ""
+
+
+@app.route('/remote/tabs/switch', methods=['PUT'])
+def switch_tab():
+    pyautogui.keyDown('ctrl')
+    pyautogui.press('tab')
+    pyautogui.keyUp('ctrl')
     return ""
 
 
@@ -90,13 +102,13 @@ def left():
 
 
 @app.route('/remote/move/up', methods=['PUT'])
-def left():
+def up():
     pyautogui.press('up')
     return ""
 
 
 @app.route('/remote/move/down', methods=['PUT'])
-def left():
+def down():
     pyautogui.press('down')
     return ""
 
