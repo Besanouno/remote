@@ -8,7 +8,7 @@ from flask import request
 app = Flask(__name__)
 
 
-@app.route('/remote/audio/volume', methods=['PUT'])
+@app.route('/remote/unix/audio/volume', methods=['PUT'])
 def set_audio_volume():
     volume = request.args.get('volume')
     bash_command = "amixer -D pulse sset Master " + volume + "%"
@@ -16,7 +16,7 @@ def set_audio_volume():
     return volume
 
 
-@app.route('/remote/audio/volume', methods=['GET'])
+@app.route('/remote/unix/audio/volume', methods=['GET'])
 def get_audio_volume():
     bash_command = "amixer -D pulse get Master"
     process = subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
@@ -25,7 +25,7 @@ def get_audio_volume():
     return volume
 
 
-@app.route('/remote/speakers/status', methods=['GET'])
+@app.route('/remote/unix/speakers/status', methods=['GET'])
 def get_speakers_status():
     bash_command = "amixer -D pulse get Master"
     process = subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
@@ -34,7 +34,7 @@ def get_speakers_status():
     return status
 
 
-@app.route('/remote/speakers/status', methods=['PUT'])
+@app.route('/remote/unix/speakers/status', methods=['PUT'])
 def set_speakers_status():
     status = request.args.get('status')
     bash_command = "amixer -D pulse sset Master " + status
@@ -42,13 +42,13 @@ def set_speakers_status():
     return status
 
 
-@app.route('/remote/audio/volume/down', methods=['PUT'])
+@app.route('/remote/win/audio/volume/down', methods=['PUT'])
 def volume_down():
     pyautogui.press('volumedown')
     return ""
 
 
-@app.route('/remote/audio/volume/up', methods=['PUT'])
+@app.route('/remote/win/audio/volume/up', methods=['PUT'])
 def volume_up():
     pyautogui.press('volumeup')
     return ""
@@ -113,7 +113,7 @@ def down():
     return ""
 
 
-@app.route('/remote/video/playpause', methods=['PUT'])
+@app.route('/remote/video', methods=['PUT'])
 def play_pause():
     pyautogui.press('space')
     return ""
