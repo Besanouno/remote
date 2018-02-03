@@ -6,7 +6,7 @@ import retrofit2.http.Query;
 
 public interface VideoRetrofit {
 
-    @PUT("remote/video/playpause")
+    @PUT("remote/video")
     Call<Void> playOrPause();
 
 }
