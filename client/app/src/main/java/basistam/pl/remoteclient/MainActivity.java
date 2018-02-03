@@ -2,6 +2,7 @@ package basistam.pl.remoteclient;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import basistam.pl.remoteclient.controller.AudioController;
 import basistam.pl.remoteclient.controller.VideoController;
@@ -24,5 +25,8 @@ public class MainActivity extends AppCompatActivity {
         new AudioController(this, addressService);
         new VideoController(this, addressService);
         new WindowController(this, addressService);
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(View.GONE);
+
     }
 }

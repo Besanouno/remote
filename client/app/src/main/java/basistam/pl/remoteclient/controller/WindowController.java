@@ -29,7 +29,7 @@ public class WindowController {
 
     private void initAddressField(Activity mainActivity, AddressReader addressReader) {
 
-        EditText edtAddress = mainActivity.findViewById(R.id.edt_address);
+        EditText edtAddress = mainActivity.findViewById(R.id.edt_host);
         edtAddress.setText(addressReader.getAddress());
         EditText edtPort = mainActivity.findViewById(R.id.edt_port);
         edtPort.setText(addressReader.getPort());
