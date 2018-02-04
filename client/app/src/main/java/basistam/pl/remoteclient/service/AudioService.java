@@ -3,10 +3,12 @@ package basistam.pl.remoteclient.service;
 import basistam.pl.remoteclient.utils.Callback;
 
 public interface AudioService {
-    void setAudioVolume(final int volume);
-    void getAudioVolumeAndCall(final Callback<Integer> callback);
-    void setSpeakersStatus(final String status);
-    void getSpeakersStatusAndCall(final Callback<String> callback);
+    void setUnixAudioVolume(final int volume);
+    void getUnixAudioVolumeAndCall(final Callback<Integer> callback);
+    void setUnixSpeakersStatus(final String status);
+    void getUnixSpeakersStatusAndCall(final Callback<String> callback);
+    void setWinAudioVolumeUp();
+    void setWinAudioVolumeDown();
     void next();
     void prev();
 }

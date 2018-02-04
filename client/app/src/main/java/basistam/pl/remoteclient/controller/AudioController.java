@@ -1,9 +1,6 @@
 package basistam.pl.remoteclient.controller;
 
 import android.app.Activity;
-import android.content.Context;
-import android.view.View;
-import android.widget.ImageButton;
 import android.widget.SeekBar;
 
 import basistam.pl.remoteclient.R;
@@ -26,6 +23,8 @@ public class AudioController {
         initBtnUnmute(mainActivity);
         initBtnNext(mainActivity);
         initBtnPrev(mainActivity);
+        initBtnVolumeUp(mainActivity);
+        initBtnVolumeDown(mainActivity);
     }
 
     private void initVolumeBar(Activity mainActivity) {
@@ -38,7 +37,7 @@ public class AudioController {
         volumeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                audioService.setAudioVolume(progress);
+                audioService.setUnixAudioVolume(progress);
             }
 
             @Override
@@ -52,7 +51,7 @@ public class AudioController {
     }
 
     private void synchronizeAudioVolume() {
-        audioService.getAudioVolumeAndCall(param -> volumeBar.setProgress(param));
+        audioService.getUnixAudioVolumeAndCall(param -> volumeBar.setProgress(param));
     }
 
     private void initBtnSynchronize(Activity mainActivity) {
@@ -64,13 +63,13 @@ public class AudioController {
     private void initBtnMute(Activity mainActivity) {
         mainActivity
                 .findViewById(R.id.btn_mute)
-                .setOnClickListener(v -> audioService.setSpeakersStatus(SpeakerStatus.OFF));
+                .setOnClickListener(v -> audioService.setUnixSpeakersStatus(SpeakerStatus.OFF));
     }
 
     private void initBtnUnmute(Activity mainActivity) {
         mainActivity
                 .findViewById(R.id.btn_unmute)
-                .setOnClickListener(v -> audioService.setSpeakersStatus(SpeakerStatus.ON));
+                .setOnClickListener(v -> audioService.setUnixSpeakersStatus(SpeakerStatus.ON));
     }
 
     private void initBtnNext(Activity mainActivity) {
@@ -83,5 +82,17 @@ public class AudioController {
         mainActivity
                 .findViewById(R.id.btn_prev)
                 .setOnClickListener(v -> audioService.prev());
+    }
+
+    private void initBtnVolumeUp(Activity mainActivity) {
+        mainActivity
+                .findViewById(R.id.btn_volume_up)
+                .setOnClickListener(v -> audioService.setWinAudioVolumeUp());
+    }
+
+    private void initBtnVolumeDown(Activity mainActivity) {
+        mainActivity
+                .findViewById(R.id.btn_volume_down)
+                .setOnClickListener(v -> audioService.setWinAudioVolumeDown());
     }
 }

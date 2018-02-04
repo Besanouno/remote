@@ -5,11 +5,12 @@ import com.google.gson.GsonBuilder;
 
 import basistam.pl.remoteclient.retrofit.AudioRetrofit;
 import basistam.pl.remoteclient.service.address.AddressReader;
-import basistam.pl.remoteclient.tasks.audio.unix.ChangeAudioVolumeTask;
+import basistam.pl.remoteclient.tasks.audio.unix.ChangeUnixAudioVolumeTask;
 import basistam.pl.remoteclient.tasks.audio.unix.ChangeSpeakersStatusTask;
 import basistam.pl.remoteclient.tasks.audio.unix.GetAudioVolumeTask;
 import basistam.pl.remoteclient.tasks.audio.unix.GetSpeakersStatusTask;
 import basistam.pl.remoteclient.tasks.audio.SkipTask;
+import basistam.pl.remoteclient.tasks.audio.win.ChangeWinAudioVolumeTask;
 import basistam.pl.remoteclient.utils.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -30,23 +31,33 @@ public class AudioServiceImpl implements AudioService {
     }
 
     @Override
-    public void setAudioVolume(final int volume) {
-        new ChangeAudioVolumeTask(audioRetrofit).execute(volume);
+    public void setUnixAudioVolume(final int volume) {
+        new ChangeUnixAudioVolumeTask(audioRetrofit).execute(volume);
     }
 
     @Override
-    public void getAudioVolumeAndCall(final Callback<Integer> callback) {
+    public void getUnixAudioVolumeAndCall(final Callback<Integer> callback) {
         new GetAudioVolumeTask(audioRetrofit, callback).execute();
     }
 
     @Override
-    public void setSpeakersStatus(String status) {
+    public void setUnixSpeakersStatus(String status) {
         new ChangeSpeakersStatusTask(audioRetrofit).execute(status);
     }
 
     @Override
-    public void getSpeakersStatusAndCall(Callback<String> callback) {
+    public void getUnixSpeakersStatusAndCall(Callback<String> callback) {
         new GetSpeakersStatusTask(audioRetrofit, callback).execute();
+    }
+
+    @Override
+    public void setWinAudioVolumeUp() {
+        new ChangeWinAudioVolumeTask(audioRetrofit).execute("up");
+    }
+
+    @Override
+    public void setWinAudioVolumeDown() {
+        new ChangeWinAudioVolumeTask(audioRetrofit).execute("down");
     }
 
     @Override

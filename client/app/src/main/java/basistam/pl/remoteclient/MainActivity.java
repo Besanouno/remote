@@ -25,8 +25,6 @@ public class MainActivity extends AppCompatActivity {
         new AudioController(this, addressService);
         new VideoController(this, addressService);
         new WindowController(this, addressService);
-        View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(View.GONE);
 
     }
 }
