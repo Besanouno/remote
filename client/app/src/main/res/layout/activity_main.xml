@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/appBackground"
+    android:orientation="vertical"
     tools:context="basistam.pl.remoteclient.MainActivity">
 
     <LinearLayout
@@ -62,17 +62,6 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/btn_system"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@color/appBackground"
-            android:src="@drawable/ic_linux"
-            />
-
-        <ImageButton
             android:id="@+id/btn_save"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -80,135 +69,221 @@
             android:layout_marginEnd="5dp"
             android:layout_marginRight="5dp"
             android:background="@drawable/circle_button"
-            android:src="@drawable/ic_save"
-            />
+            android:contentDescription="@string/save"
+            android:src="@drawable/ic_save" />
+
+        <ImageButton
+            android:id="@+id/btn_system"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/appBackground"
+            android:contentDescription="@string/sys"
+            android:src="@drawable/ic_linux" />
+
     </LinearLayout>
 
     <TextView
         android:id="@+id/tv_audioVolume"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/volumeBar"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"
-        android:text="Głośność" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/volume_label" />
 
-    <SeekBar
-        android:id="@+id/volumeBar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/tv_audioVolume"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:max="100"
-        android:min="0" />
-
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/win_audio_panel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <ImageButton
-            android:id="@+id/btn_synchronize"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/btn_volume_down"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_refresh" />
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/volume_down"
+            android:src="@drawable/ic_volume_down" />
 
         <ImageButton
-            android:id="@+id/btn_unmute"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:visibility="visible"
-            app:srcCompat="@drawable/ic_unmute" />
+            android:id="@+id/btn_volume_up"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp"
+            android:layout_toEndOf="@+id/btn_volume_down"
+            android:layout_toRightOf="@+id/btn_volume_down"
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/volume_up"
+            android:src="@drawable/ic_volume_up" />
 
-        <ImageButton
-            android:id="@+id/btn_mute"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:visibility="visible"
-            app:srcCompat="@drawable/ic_mute" />
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/unix_audio_panel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/btn_windows"
+        <SeekBar
+            android:id="@+id/volumeBar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/tv_audioVolume"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:max="100"
+            android:min="0" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:visibility="visible"
-            app:srcCompat="@drawable/ic_windows" />
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/btn_tabs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:visibility="visible"
-            app:srcCompat="@drawable/ic_tabs" />
+            <ImageButton
+                android:id="@+id/btn_synchronize"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/circle_button"
+                app:srcCompat="@drawable/ic_refresh" />
 
+            <ImageButton
+                android:id="@+id/btn_unmute"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/circle_button"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_unmute" />
+
+            <ImageButton
+                android:id="@+id/btn_mute"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/circle_button"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_mute" />
+
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:layout_marginTop="5dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/btn_prev"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:visibility="visible"
-            app:srcCompat="@drawable/ic_prev" />
-
-        <ImageButton
-            android:id="@+id/btn_playPause"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_play" />
-
-        <ImageButton
-            android:id="@+id/btn_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_next" />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/btn_prev"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/prev"
+            android:src="@drawable/ic_prev"
+            android:visibility="visible" />
+
+        <ImageButton
+            android:id="@+id/btn_playPause"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/play"
+            android:src="@drawable/ic_play" />
+
+        <ImageButton
+            android:id="@+id/btn_next"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/next"
+            android:src="@drawable/ic_next" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_windows"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/circle_button"
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_windows" />
+
+        <ImageButton
+            android:id="@+id/btn_tabs"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/circle_button"
+            android:visibility="visible"
+            app:srcCompat="@drawable/ic_tabs" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <ImageButton
             android:id="@+id/btn_left"
             android:layout_width="50dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_gravity="center_vertical"
-            app:srcCompat="@drawable/ic_left" />
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/left"
+            android:src="@drawable/ic_left" />
 
         <LinearLayout
             android:layout_width="50dp"
@@ -219,21 +294,31 @@
                 android:id="@+id/btn_up"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/ic_up" />
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/circle_button"
+                android:contentDescription="@string/up"
+                android:src="@drawable/ic_up" />
 
             <ImageButton
                 android:id="@+id/btn_down"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@drawable/ic_down" />
+                android:layout_marginTop="10dp"
+                android:background="@drawable/circle_button"
+                android:contentDescription="@string/down"
+                android:src="@drawable/ic_down" />
         </LinearLayout>
 
         <ImageButton
             android:id="@+id/btn_right"
             android:layout_width="50dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_gravity="center_vertical"
-            app:srcCompat="@drawable/ic_right" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/circle_button"
+            android:contentDescription="@string/right"
+            android:src="@drawable/ic_right" />
 
     </LinearLayout>
 

@@ -1,4 +1,4 @@
-package basistam.pl.remoteclient.tasks.audio;
+package basistam.pl.remoteclient.tasks.audio.unix;
 
 import android.os.AsyncTask;
 
@@ -20,7 +20,7 @@ public class GetSpeakersStatusTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected String doInBackground(Void... params) {
-        Call<String> request = audioRetrofit.getSpeakersStatusRequest();
+        Call<String> request = audioRetrofit.getUnixSpeakersStatusRequest();
         try {
             return request.execute().body();
         } catch (IOException e) {

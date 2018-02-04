@@ -1,7 +1,6 @@
-package basistam.pl.remoteclient.tasks.audio;
+package basistam.pl.remoteclient.tasks.audio.unix;
 
 import android.os.AsyncTask;
-import android.widget.SeekBar;
 
 import java.io.IOException;
 
@@ -23,7 +22,7 @@ public class GetAudioVolumeTask extends AsyncTask<Void, Void, Integer> {
     @Override
     protected Integer doInBackground(Void... params) {
         try {
-            Call<Integer> request = audioRetrofit.getVolumeRequest();
+            Call<Integer> request = audioRetrofit.getUnixVolumeRequest();
             return request.execute().body();
         } catch (IOException e) {
             e.printStackTrace();

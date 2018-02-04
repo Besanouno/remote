@@ -2,4 +2,16 @@
     <string name="app_name">RemoteClient</string>
     <string name="port_label">Port</string>
     <string name="host_label">Host</string>
+    <string name="save">save</string>
+    <string name="sys">sys</string>
+    <string name="volume_down">volume down</string>
+    <string name="volume_up">volume up</string>
+    <string name="volume_label">Głośność</string>
+    <string name="play">play</string>
+    <string name="next">next</string>
+    <string name="prev">prev</string>
+    <string name="left">left</string>
+    <string name="up">up</string>
+    <string name="down">down</string>
+    <string name="right">right</string>
 </resources>

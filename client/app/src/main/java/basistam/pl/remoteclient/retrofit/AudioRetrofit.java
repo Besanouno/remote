@@ -9,17 +9,20 @@ import retrofit2.http.Query;
 public interface AudioRetrofit {
 
     @PUT("remote/unix/audio/volume")
-    Call<Integer> setVolumeRequest(@Query("volume") final int volume);
+    Call<Integer> setUnixVolumeRequest(@Query("volume") final int volume);
 
     @GET("remote/unix/audio/volume")
-    Call<Integer> getVolumeRequest();
+    Call<Integer> getUnixVolumeRequest();
 
     @PUT("remote/unix/speakers/status")
-    Call<String> setSpeakersStatusRequest(@Query("status") final String status);
+    Call<String> setUnixSpeakersStatusRequest(@Query("status") final String status);
 
     @GET("remote/unix/speakers/status")
-    Call<String> getSpeakersStatusRequest();
+    Call<String> getUnixSpeakersStatusRequest();
+
+    @GET("remote/win/audio/volume/{dir}")
+    Call<String> setWindowsVolumeRequest(@Path("dir") String dir);
 
     @PUT("remote/audio/{dir}")
-    Call<Void> skip(@Path("dir") String dir);
+    Call<Void> skipRequest(@Path("dir") String dir);
 }

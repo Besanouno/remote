@@ -1,4 +1,4 @@
-package basistam.pl.remoteclient.tasks.audio;
+package basistam.pl.remoteclient.tasks.audio.win;
 
 import android.os.AsyncTask;
 
@@ -20,7 +20,7 @@ public class ChangeAudioVolumeTask extends AsyncTask<Integer, Void, Void> {
         try {
             if (params.length != 0) {
                 int volume = params[0];
-                Call<Integer> request = audioRetrofit.setVolumeRequest(volume);
+                Call<Integer> request = audioRetrofit.setUnixVolumeRequest(volume);
                 request.execute();
             }
         } catch (IOException e) {

@@ -22,7 +22,7 @@ public class SkipTask extends AsyncTask<String, Void, Void> {
             dir = params[0];
         }
         try {
-            audioRetrofit.skip(dir).execute();
+            audioRetrofit.skipRequest(dir).execute();
         } catch (IOException e) {
             e.printStackTrace();
         }
