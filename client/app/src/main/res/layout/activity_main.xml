@@ -29,13 +29,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginStart="5dp"
-                android:text="@string/host_label" />
+                android:text="@string/host_label"
+                android:textColor="@android:color/white" />
 
             <EditText
                 android:id="@+id/edt_host"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -52,13 +54,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginStart="5dp"
-                android:text="@string/port_label" />
+                android:text="@string/port_label"
+                android:textColor="@android:color/white" />
 
             <EditText
                 android:id="@+id/edt_port"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
         <ImageButton
@@ -94,7 +98,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
-        android:text="@string/volume_label" />
+        android:text="@string/volume_label"
+        android:textColor="@android:color/white" />
 
     <RelativeLayout
         android:id="@+id/win_audio_panel"

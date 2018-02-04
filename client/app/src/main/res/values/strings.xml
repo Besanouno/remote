@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RemoteClient</string>
+    <string name="app_name">Pilot</string>
     <string name="port_label">Port</string>
     <string name="host_label">Host</string>
     <string name="save">save</string>
