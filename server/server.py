@@ -121,5 +121,12 @@ def play_pause():
     return ""
 
 
+@app.route('/remote/sleep', methods=['PUT'])
+def sleep():
+    bash_command = "systemctl suspend"
+    subprocess.Popen(bash_command.split(), stdout=subprocess.PIPE)
+    return ""
+
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0")
